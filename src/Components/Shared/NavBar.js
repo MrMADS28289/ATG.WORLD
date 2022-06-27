@@ -1,8 +1,13 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { NavLink } from "react-router-dom";
+import auth from '../../firebase.init';
 
 const NavBar = () => {
+
+    const [user] = useAuthState(auth);
 
     // Active Link Style 
     const activeStyle = {
@@ -16,6 +21,10 @@ const NavBar = () => {
         textDecoration: "none",
         marginRight: "10px"
     };
+
+    const handleLogout = () => {
+        signOut(auth);
+    }
 
     return (
         <Navbar bg="light" expand="lg">
@@ -46,12 +55,20 @@ const NavBar = () => {
                                 isActive ? activeStyle : inactiveStyle
                             }
                         >Dashboard</NavLink>
-                        <NavLink
-                            to="login"
-                            style={({ isActive }) =>
-                                isActive ? activeStyle : inactiveStyle
-                            }
-                        >Login</NavLink>
+
+                        {
+                            user ? <Button
+                                variant="light"
+                                className='m-0 p-0'
+                                onClick={handleLogout}
+                            >Logout</Button> :
+                                <NavLink
+                                    to="login"
+                                    style={({ isActive }) =>
+                                        isActive ? activeStyle : inactiveStyle
+                                    }
+                                >Login</NavLink>
+                        }
                     </Nav>
 
                     {/* Search Section */}
