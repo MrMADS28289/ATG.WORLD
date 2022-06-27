@@ -7,6 +7,7 @@ import Regester from './Components/Login/Regester';
 import Products from './Components/Products/Products';
 import NavBar from './Components/Shared/NavBar';
 import { ToastContainer } from 'react-toastify';
+import Profile from './Components/Profile/Profile';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/products' element={<Products />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='regester' element={<Regester />} />
       </Routes>
