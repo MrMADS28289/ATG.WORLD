@@ -1,18 +1,35 @@
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import React, { useState } from 'react';
-import { Col, Form, Row, ToastContainer } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { Col, Form, Row } from 'react-bootstrap';
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
+import Loading from '../Shared/Loading';
 
 const Regester = () => {
 
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error1,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
+    if (loading) {
+        return <Loading />;
+    }
+    if (error1) {
+        toast.error(error1?.message);
+        setError(error1?.message)
+    }
+    if (user) {
+        navigate(from, { replace: true });
+        toast.success('Regester Success.')
+    }
 
     /*** Handle form submit ***/
     const handleRegester = (e) => {
@@ -22,10 +39,25 @@ const Regester = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         const confirmPassword = e.target.confirm_password.value;
-        console.log(name, email, password, confirmPassword);
+        const user = { name, email };
+        // console.log(name, email, password, confirmPassword);
+
         if (password === confirmPassword) {
             createUserWithEmailAndPassword(email, password);
+
+            // send user info to mongodb
+            fetch('http://localhost:5000/user', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify(user),
+            })
+                .then((res) => res.json())
+                .then((data) => console.log(data));
+
             setError('');
+            e.target.reset();
         }
         else {
             setError('Password and confirm password does not match')
@@ -35,7 +67,7 @@ const Regester = () => {
 
     return (
         <>
-            { /*** Login form part ***/}
+            { /*** Regester form part ***/}
             <Row className='d-flex justify-content-center align-items-center'>
                 <Col className='col-10 col-md-8 col-lg-6'>
                     <div className='my-4'>
@@ -67,7 +99,7 @@ const Regester = () => {
                             placeholder="Confirm Password" />
 
                         {
-                            error && <p className='text-danger'>{error || error1}</p>
+                            error && <p className='text-danger'>{error}</p>
                         }
 
                         <input
@@ -84,9 +116,6 @@ const Regester = () => {
                     </form>
                 </Col>
             </Row>
-
-            { /*** For React Toastify ***/}
-            <ToastContainer />
         </>
     );
 };

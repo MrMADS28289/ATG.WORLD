@@ -2,12 +2,14 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import auth from '../../firebase.init';
+import { toast } from 'react-toastify';
 
 const NavBar = () => {
 
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     // Active Link Style 
     const activeStyle = {
@@ -24,6 +26,8 @@ const NavBar = () => {
 
     const handleLogout = () => {
         signOut(auth);
+        navigate('/');
+        toast.success('Logout Success')
     }
 
     return (
@@ -50,11 +54,17 @@ const NavBar = () => {
                             }
                         >Products</NavLink>
                         <NavLink
-                            to="dashboard"
+                            to="/dashboard"
                             style={({ isActive }) =>
                                 isActive ? activeStyle : inactiveStyle
                             }
                         >Dashboard</NavLink>
+                        <NavLink
+                            to="/profile"
+                            style={({ isActive }) =>
+                                isActive ? activeStyle : inactiveStyle
+                            }
+                        >Profile</NavLink>
 
                         {
                             user ? <Button
