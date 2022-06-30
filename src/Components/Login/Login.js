@@ -21,6 +21,7 @@ const Login = () => {
     const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(
         auth
     );
+    console.log(email);
 
     if (loading || sending) {
         return <Loading />;

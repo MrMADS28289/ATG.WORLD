@@ -1,97 +1,47 @@
-import { signOut } from 'firebase/auth';
 import React from 'react';
-import { Navbar, Container, Nav, Form, FormControl, Button } from 'react-bootstrap';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { NavLink, useNavigate } from "react-router-dom";
-import auth from '../../firebase.init';
-import { toast } from 'react-toastify';
+import { Navbar, Container, Form, FormControl } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import logo from '../../Assets/logo.png';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { IoMdArrowDropdown } from 'react-icons/io';
+import { BiDownArrow, BiCircle, BiRectangle } from 'react-icons/bi';
 
 const NavBar = () => {
 
-    const [user] = useAuthState(auth);
-    const navigate = useNavigate();
-
-    // Active Link Style 
-    const activeStyle = {
-        color: "black",
-        marginRight: "10px"
-    };
-
-    // Inactive Link Style
-    const inactiveStyle = {
-        color: "gray",
-        textDecoration: "none",
-        marginRight: "10px"
-    };
-
-    const handleLogout = () => {
-        signOut(auth);
-        navigate('/');
-        toast.success('Logout Success')
-    }
-
     return (
-        <Navbar bg="light" expand="lg">
-            <Container fluid>
-                <Navbar.Brand href="#">Inventory Management System</Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                        className="me-auto my-2 my-lg-0"
-                        style={{ maxHeight: '100px' }}
-                        navbarScroll
-                    >
-                        <NavLink
-                            to="/"
-                            style={({ isActive }) =>
-                                isActive ? activeStyle : inactiveStyle
-                            }
-                        >Home</NavLink>
-                        <NavLink
-                            to="/products"
-                            style={({ isActive }) =>
-                                isActive ? activeStyle : inactiveStyle
-                            }
-                        >Products</NavLink>
-                        <NavLink
-                            to="/dashboard"
-                            style={({ isActive }) =>
-                                isActive ? activeStyle : inactiveStyle
-                            }
-                        >Dashboard</NavLink>
-                        <NavLink
-                            to="/profile"
-                            style={({ isActive }) =>
-                                isActive ? activeStyle : inactiveStyle
-                            }
-                        >Profile</NavLink>
+        <Navbar bg="white" expand="lg">
+            <Container className='d-flex justify-content-between d-none d-md-flex'>
+                <Navbar.Brand href="#">
+                    <Link to='/'><img height={30} src={logo} alt="ATG-logo" /></Link>
+                </Navbar.Brand>
 
-                        {
-                            user ? <Button
-                                variant="light"
-                                className='m-0 p-0'
-                                onClick={handleLogout}
-                            >Logout</Button> :
-                                <NavLink
-                                    to="login"
-                                    style={({ isActive }) =>
-                                        isActive ? activeStyle : inactiveStyle
-                                    }
-                                >Login</NavLink>
-                        }
-                    </Nav>
+                <Form
+                    className="d-flex align-items-center rounded-pill px-3"
+                    style={{
+                        width: "370px",
+                        backgroundColor: "#F2F2F2"
+                    }}
+                >
+                    <AiOutlineSearch hanging={30} />
+                    <FormControl
+                        style={{ backgroundColor: "#F2F2F2" }}
+                        type="search"
+                        placeholder="Search for your favorite groups in ATG"
+                        className="me-2 border-0"
+                        aria-label="Search"
+                    />
+                </Form>
 
-                    {/* Search Section */}
-                    <Form className="d-flex">
-                        <FormControl
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
-                </Navbar.Collapse>
+                <Link to='/login'
+                    className='text-decoration-none text-black'
+                >
+                    Create account. <span className='fw-bold text-primary'>It's free!</span> <IoMdArrowDropdown />
+                </Link>
+            </Container>
+            <Container className='d-flex justify-content-end d-md-none'>
+                <div>
+                    <BiRectangle /> <BiCircle /> <BiDownArrow />
+                </div>
             </Container>
         </Navbar>
     );
