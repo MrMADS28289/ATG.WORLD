@@ -124,7 +124,7 @@ const Posts = () => {
                         </div>
                     </div>
                 </Col>
-                <Col className='mt-2'>
+                <Col className='d-none d-md-block mt-2'>
                     <p className='d-flex justify-content-between px-3 border-bottom border-2 fw-bold'>
                         <span><GoLocation /> Noida, India</span>
                         <MdEdit />

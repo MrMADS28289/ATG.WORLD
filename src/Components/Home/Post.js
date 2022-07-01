@@ -3,7 +3,6 @@ import { Button, Col, Row } from 'react-bootstrap';
 import { AiOutlineEye } from 'react-icons/ai';
 import { BsFillShareFill, BsThreeDots } from 'react-icons/bs';
 import { MdCategory } from 'react-icons/md';
-import hand from '../../Assets/hand.png';
 
 const Post = ({ post }) => {
 

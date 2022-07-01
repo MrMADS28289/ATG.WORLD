@@ -1,12 +1,20 @@
-import React from 'react';
-import { Navbar, Container, Form, FormControl } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Navbar, Container, Form, FormControl, Modal, Button, Row, Col } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import logo from '../../Assets/logo.png';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { IoMdArrowDropdown } from 'react-icons/io';
+import { RiFacebookCircleFill } from 'react-icons/ri';
+import { FcGoogle } from 'react-icons/fc';
 import { BiDownArrow, BiCircle, BiRectangle } from 'react-icons/bi';
+import d_log from '../../Assets/d_log.png';
 
 const NavBar = () => {
+
+    const [show, setShow] = useState(false);
+    const [show1, setShow1] = useState(false);
+    const handleClose = () => setShow1(false);
+    const handleShow = () => setShow1(true);
 
     return (
         <Navbar bg="white" expand="lg">
@@ -32,17 +40,179 @@ const NavBar = () => {
                     />
                 </Form>
 
-                <Link to='/login'
-                    className='text-decoration-none text-black'
+                <button
+                    className='border-0 bg-white'
+                    onClick={() => setShow(true)}
                 >
                     Create account. <span className='fw-bold text-primary'>It's free!</span> <IoMdArrowDropdown />
-                </Link>
+                </button>
             </Container>
-            <Container className='d-flex justify-content-end d-md-none'>
+            <Container className='d-flex justify-content-between d-md-none'>
+                <button
+                    className='border-0 bg-white'
+                    onClick={() => setShow(true)}
+                >
+                    Create account. <span className='fw-bold text-primary'>It's free!</span> <IoMdArrowDropdown />
+                </button>
                 <div>
                     <BiRectangle /> <BiCircle /> <BiDownArrow />
                 </div>
             </Container>
+
+            {/* Create account Modal */}
+            <Modal
+                size='lg'
+                show={show}
+                onHide={() => setShow(false)}
+                dialogClassName="modal-90w"
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header
+                    closeButton
+                    style={{ background: '#EFFFF4' }}
+                >
+                    <p
+                        style={{
+                            color: "#37C172"
+                        }}
+                    >Let's learn, share & inspire each other with our passion for computer engineering. Sign up now 🤘🏼</p>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className='d-flex justify-content-between'>
+                        <h3>Create Account</h3>
+                        <p>Already have an account? <button
+                            className='border-0 bg-white text-primary'
+                            onClick={() => {
+                                setShow(false);
+                                handleShow();
+                            }}
+                        >Sign In</button></p>
+                    </div>
+
+                    <Row>
+                        <Col className='col-12 col-md-6'>
+                            <Form>
+                                <div className='d-flex'>
+                                    <Form.Control
+                                        type="text"
+                                        placeholder='First Name'
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        placeholder='Last Name'
+                                    />
+                                </div>
+                                <Form.Control
+                                    type="email"
+                                    placeholder='Email'
+                                />
+                                <Form.Control
+                                    type="password"
+                                    placeholder='Password'
+                                />
+                                <Form.Control
+                                    type="password"
+                                    placeholder='Confirm Password'
+                                />
+                                <Button
+                                    className='w-100 rounded-pill mt-2'
+                                    variant="primary"
+                                    type="submit"
+                                >Create Account</Button>
+                            </Form>
+
+                            <div className='mt-3'>
+                                <Button
+                                    className='w-100 bg-white border border-2 rounded-3 text-black'
+                                ><RiFacebookCircleFill /> Sign up with Facebook</Button>
+
+                                <Button
+                                    className='w-100 bg-white border border-2 rounded-3 mt-2 text-black'
+                                ><FcGoogle /> Sign up with Google</Button>
+                            </div>
+                        </Col>
+                        <Col className='col-6 d-none d-md-block mt-3'>
+                            <img className='img-fluid' src={d_log} alt="" />
+                            <p
+                                style={{
+                                    fontSize: '12px',
+                                    color: '#ADB5BD'
+                                }}
+                                className=''>By signing up, you agree to our Terms & conditions, Privacy policy</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+            </Modal>
+
+            {/* Sign in modal */}
+            <Modal
+                size='lg'
+                show={show1}
+                onHide={handleClose}
+                animation={false}>
+                <Modal.Header
+                    closeButton
+                    style={{ background: '#EFFFF4' }}
+                >
+                    <p
+                        style={{
+                            color: "#37C172"
+                        }}
+                    >Let's learn, share & inspire each other with our passion for computer engineering. Sign up now 🤘🏼</p>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className='d-flex justify-content-between'>
+                        <h3>Sign In</h3>
+                        <p>Don’t have an account yet? <button
+                            className='border-0 bg-white text-primary'
+                            onClick={() => {
+                                setShow(true);
+                                handleClose();
+                            }}
+                        >Create new for free!</button></p>
+                    </div>
+
+                    <Row>
+                        <Col className='col-12 col-md-6'>
+                            <Form>
+                                <Form.Control
+                                    type="email"
+                                    placeholder='Email'
+                                />
+                                <Form.Control
+                                    type="password"
+                                    placeholder='Password'
+                                />
+                                <Button
+                                    className='w-100 rounded-pill mt-2'
+                                    variant="primary"
+                                    type="submit"
+                                >Sign In</Button>
+                            </Form>
+
+                            <div className='mt-3'>
+                                <Button
+                                    className='w-100 bg-white border border-2 rounded-3 text-black'
+                                ><RiFacebookCircleFill /> Sign up with Facebook</Button>
+
+                                <Button
+                                    className='w-100 bg-white border border-2 rounded-3 mt-2 text-black'
+                                ><FcGoogle /> Sign up with Google</Button>
+                                <p className='fw-bold text-center mt-3'>Forgot Password?</p>
+                            </div>
+                        </Col>
+                        <Col className='col-6 d-none d-md-block mt-3'>
+                            <img className='img-fluid' src={d_log} alt="" />
+                            <p
+                                style={{
+                                    fontSize: '12px',
+                                    color: '#ADB5BD'
+                                }}
+                                className=''>By signing up, you agree to our Terms & conditions, Privacy policy</p>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+            </Modal>
         </Navbar>
     );
 };
