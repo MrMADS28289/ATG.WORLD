@@ -3,11 +3,10 @@ import { Button, Container } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { MdGroupAdd } from 'react-icons/md';
-import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
-        <Container className='d-flex justify-content-between mt-3 border-bottom border-1'>
+        <Container className='d-none d-md-flex justify-content-between mt-3 border-bottom border-1'>
             <Nav
                 className='border-bottom-0 fw-bold'
                 variant="tabs"

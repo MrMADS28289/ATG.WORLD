@@ -13,7 +13,7 @@ const Banner = () => {
             <div
                 style={{
                     background: 'black',
-                    opacity: '0.6',
+                    opacity: '0.7',
                     height: '100%'
                 }}
             >
