@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import avatar2 from '../../Assets/avatar.png';
+import avatar2 from '../../Assets/avatar.jpg';
 const UsersInfo = ({ user, setUser }) => {
 
     const { profile, avatar } = user;

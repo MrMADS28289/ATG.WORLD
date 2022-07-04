@@ -1,12 +1,10 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
-import avatar2 from '../../Assets/avatar.png';
+import avatar2 from '../../Assets/avatar.jpg';
 
 const UserInfo = ({ user }) => {
 
     const duser = { firstName: '', lastName: '', email: '', username: 'Loading...' }
     const { jobTitle, Bio, profile, avatar } = user;
-
     const { firstName, lastName, username, email } = profile || duser;
 
     return (
@@ -21,6 +19,7 @@ const UserInfo = ({ user }) => {
 
             <div className='d-flex flex-column align-items-center border-2 border-top border-dark pt-3'>
                 <img
+                    className='rounded-circle'
                     height={180}
                     width={180}
                     src={avatar && avatar2}
