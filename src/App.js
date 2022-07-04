@@ -1,11 +1,9 @@
-import Home from './Components/Home/Home';
-import NavBar from './Components/Shared/NavBar';
+import Dashboard from './Components/Dashboard/Dashboard';
 
 function App() {
   return (
     <>
-      <NavBar />
-      <Home />
+      <Dashboard />
     </>
   );
 }
