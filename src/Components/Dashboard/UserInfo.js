@@ -24,35 +24,36 @@ const UserInfo = ({ user }) => {
                     width={180}
                     src={avatar && avatar2}
                     alt="" />
-                <p className='fs-3 m-0'>{username}</p>
+                <p className='fs-4 m-0 mb-2'>{username}</p>
 
                 <div className='w-75 d-flex flex-column justify-content-center'>
                     <p
                         style={{
                             background: '#DBDBDB'
                         }}
-                        className='fs-5 p-2 mt-3 border border-1 border-dark rounded-1'
+                        className='fs-6 p-2 mt-3 border border-1 border-dark rounded-1'
                     >{Bio}</p>
 
-                    <p className='m-0 fs-4'>Full Name</p>
+                    <p className='m-0 fs-5'>Full Name</p>
                     <h3
-                        className='fs-4 p-2 border border-1 border-dark rounded-1'
+                        className='fs-5 p-2 border border-1 border-dark rounded-1'
                         style={{
                             background: '#DBDBDB'
                         }}
                     >{firstName + ' ' + lastName}</h3>
 
-                    <p className='m-0 fs-4'>Job Title</p>
+                    <p className='m-0 fs-5'>Job Title</p>
                     <h3
-                        className='fs-4 p-2 border border-1 border-dark rounded-1'
+                        className='fs-5 p-2 border border-1 border-dark rounded-1'
                         style={{
                             background: '#DBDBDB'
                         }}
                     >{jobTitle}</h3>
 
-                    <p className='m-0 fs-4'>Email</p>
+                    <p className='m-0 fs-5'>Email</p>
                     <h3
-                        className='fs-4 p-2 border border-1 border-dark rounded-1'
+                        className='fs-5 p-2 border border-1 border-dark rounded-1 overflow-hidden'
+                        title={email}
                         style={{
                             background: '#DBDBDB'
                         }}
