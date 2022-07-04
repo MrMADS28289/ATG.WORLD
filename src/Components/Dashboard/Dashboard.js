@@ -10,18 +10,23 @@ import { Link } from "react-router-dom";
 const Dashboard = () => {
 
     const [users, setUsers] = useState([]);
-    // const [error, setError] = useState([]);
     const [user, setUser] = useState([]);
+    const [loading, setLoading] = useState(1);
 
     useEffect(() => {
         axios.get('https://602e7c2c4410730017c50b9d.mockapi.io/users')
             .then(res => {
                 const users = res?.data;
                 setUsers(users);
-                setUser(users[0])
+                setUser(users[0]);
+                setLoading(null);
             })
             .catch(error => console.log(error?.message));
     }, [])
+
+    if (loading) {
+        return <Loading />
+    }
 
     return (
         <div style={{ background: '#82878C' }}>
