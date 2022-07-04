@@ -8,6 +8,7 @@ import { RiFacebookCircleFill } from 'react-icons/ri';
 import { FcGoogle } from 'react-icons/fc';
 import { BiDownArrow, BiCircle, BiRectangle } from 'react-icons/bi';
 import d_log from '../../Assets/d_log.png';
+import { RiArrowGoBackLine } from 'react-icons/ri';
 
 const NavBar = () => {
 
@@ -46,6 +47,7 @@ const NavBar = () => {
                 >
                     Create account. <span className='fw-bold text-primary'>It's free!</span> <IoMdArrowDropdown />
                 </button>
+                <Link to='/' class="ms-2 mt-2">Dashboard</Link>
             </Container>
             <Container className='d-flex justify-content-between d-md-none'>
                 <button

@@ -25,6 +25,7 @@ const UserInfo = ({ user }) => {
                     src={avatar && avatar2}
                     alt="" />
                 <p className='fs-3 m-0'>{username}</p>
+
                 <div className='w-75 d-flex flex-column justify-content-center'>
                     <p
                         style={{
