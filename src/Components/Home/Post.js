@@ -38,12 +38,15 @@ const Post = ({ post }) => {
                             height={40}
                             src={avater}
                             alt="avatar" />
-                        <h4 className='fs-5'>{name}</h4>
+                        <div>
+                            <h4 className='fs-5'>{name}</h4>
+                            <p className='m-0 d-block d-md-none'>{view} views</p>
+                        </div>
                     </Col>
                     <Col className='col-4 d-flex justify-content-between align-items-center'>
-                        <p className='fw-bold mt-2'><AiOutlineEye />{view} views</p>
+                        <p className='mt-2 d-none d-md-block'><AiOutlineEye />{view} views</p>
                         <Button variant='light'>
-                            <BsFillShareFill className='fs-5' />
+                            <BsFillShareFill className='fs-5 me-2' /> Share
                         </Button>
                     </Col>
                 </Row>

@@ -69,16 +69,19 @@ const Posts = () => {
                             <Row className='d-flex justify-content-between'>
                                 <Col className='col-8 d-flex align-items-center'>
                                     <img
-                                        className='rounded-circle border border-3 me-2'
+                                        className='rounded-circle border border-3 mt-2 me-2'
                                         height={40}
                                         src='https://i.ibb.co/n6KtQMN/team1.png'
                                         alt="avatar" />
-                                    <h4 className='fs-5'>Sarah West</h4>
+                                    <div>
+                                        <h4 className='fs-5'>Sarah West</h4>
+                                        <p className='m-0 d-block d-md-none'>64k views</p>
+                                    </div>
                                 </Col>
                                 <Col className='col-4 d-flex justify-content-between align-items-center'>
-                                    <p className='fw-bold mt-3'><AiOutlineEye />64k views</p>
+                                    <p className='mt-2 d-none d-md-block'><AiOutlineEye />64k views</p>
                                     <Button variant='light'>
-                                        <BsFillShareFill className='fs-5' />
+                                        <BsFillShareFill className='fs-5 me-2' /> Share
                                     </Button>
                                 </Col>
                             </Row>
@@ -106,18 +109,21 @@ const Posts = () => {
                             </p>
                             <Button className='w-100 bg-white border border-2 rounded-3 text-info'>Apply on Timesjobs</Button>
                             <Row className='d-flex justify-content-between'>
-                                <Col className='col-8 d-flex align-items-center'>
+                                <Col className='col-8 mt-2 d-flex align-items-center'>
                                     <img
                                         className='rounded-circle border border-3 me-2'
                                         height={40}
                                         src='https://i.ibb.co/n6KtQMN/team1.png'
                                         alt="avatar" />
-                                    <h4 className='fs-5'>Sarah West</h4>
+                                    <div>
+                                        <h4 className='fs-5'>Sarah West</h4>
+                                        <p className='m-0 d-block d-md-none'>64k views</p>
+                                    </div>
                                 </Col>
                                 <Col className='col-4 d-flex justify-content-between align-items-center'>
-                                    <p className='fw-bold mt-3'><AiOutlineEye />64k views</p>
+                                    <p className='mt-2 d-none d-md-block'><AiOutlineEye />64k views</p>
                                     <Button variant='light'>
-                                        <BsFillShareFill className='fs-5' />
+                                        <BsFillShareFill className='fs-5 me-2' /> Share
                                     </Button>
                                 </Col>
                             </Row>

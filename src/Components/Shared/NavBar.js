@@ -47,7 +47,6 @@ const NavBar = () => {
                 >
                     Create account. <span className='fw-bold text-primary'>It's free!</span> <IoMdArrowDropdown />
                 </button>
-                <Link to='/' class="ms-2 mt-2">Dashboard</Link>
             </Container>
             <Container className='d-flex justify-content-between d-md-none'>
                 <button
