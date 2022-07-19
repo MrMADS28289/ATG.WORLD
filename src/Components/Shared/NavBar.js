@@ -8,16 +8,35 @@ import { RiFacebookCircleFill } from 'react-icons/ri';
 import { FcGoogle } from 'react-icons/fc';
 import { BiDownArrow, BiCircle, BiRectangle } from 'react-icons/bi';
 import d_log from '../../Assets/d_log.png';
-import { RiArrowGoBackLine } from 'react-icons/ri';
 import SignUpForm from './SignUpForm';
 import SIgnInForm from './SIgnInForm';
+import { useEffect } from 'react';
+import avatar from '../../Assets/avatar.jpg';
+import { toast } from 'react-toastify';
+import ForgetPass from '../../ForgetPass';
 
 const NavBar = () => {
 
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
+    const [show2, setShow2] = useState(false);
     const handleClose = () => setShow1(false);
     const handleShow = () => setShow1(true);
+
+    const getEmail = localStorage.getItem('email');
+    const [email, setEmail] = useState(getEmail);
+    const [user, setUser] = useState({});
+    console.log(user);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/user/${email}`)
+            .then(res => res.json())
+            .then(data => setUser(data))
+    }, [email]);
+
+    const reload = () => {
+        window.location.reload();
+    }
 
     return (
         <Navbar bg="white" expand="lg">
@@ -43,12 +62,36 @@ const NavBar = () => {
                     />
                 </Form>
 
-                <button
-                    className='border-0 bg-white'
-                    onClick={() => setShow(true)}
-                >
-                    Create account. <span className='fw-bold text-primary'>It's free!</span> <IoMdArrowDropdown />
-                </button>
+                {
+                    !email ? <button
+                        className='border-0 bg-white'
+                        onClick={() => setShow(true)}
+                    >
+                        Create account. <span className='fw-bold text-primary'>It's free!</span> <IoMdArrowDropdown />
+                    </button>
+                        :
+                        <div className='d-flex'>
+                            <p className='pt-3'>
+                                <img
+                                    className='border border-2 rounded-pill'
+                                    height={30}
+                                    src={avatar}
+                                    alt="" />
+                                <span className='mx-2'>{user.userName}</span>
+                            </p>
+                            <Button
+                                variant='light'
+                                className='ms-4'
+                                onClick={() => {
+                                    setEmail('');
+                                    toast.success('SignOut Success');
+                                    localStorage.removeItem('email');
+                                }}
+                            >
+                                SignOut
+                            </Button>
+                        </div>
+                }
             </Container>
             <Container className='d-flex justify-content-between d-md-none'>
                 <button
@@ -94,7 +137,11 @@ const NavBar = () => {
 
                     <Row>
                         <Col className='col-12 col-md-6'>
-                            <SignUpForm />
+                            <SignUpForm
+                                setShow={setShow}
+                                setEmail={setEmail}
+                                setUser={setUser}
+                            />
 
                             <div className='mt-3'>
                                 <Button
@@ -152,7 +199,11 @@ const NavBar = () => {
 
                     <Row>
                         <Col className='col-12 col-md-6'>
-                            <SIgnInForm />
+                            <SIgnInForm
+                                setShow1={setShow1}
+                                setUser={setUser}
+                                reload={reload}
+                            />
 
                             <div className='mt-3'>
                                 <Button
@@ -162,7 +213,16 @@ const NavBar = () => {
                                 <Button
                                     className='w-100 bg-white border border-2 rounded-3 mt-2 text-black'
                                 ><FcGoogle /> Sign in with Google</Button>
-                                <p className='fw-bold text-center mt-3'>Forgot Password?</p>
+
+                                <Button
+                                    variant='light'
+                                    onClick={() => {
+                                        handleClose();
+                                        setShow2(true);
+                                    }}
+                                    className='fw-bold text-primary text-center mt-3'>Forgot Password?
+                                </Button>
+
                             </div>
                         </Col>
                         <Col className='col-6 d-none d-md-block mt-3'>
@@ -175,6 +235,25 @@ const NavBar = () => {
                                 className=''>By signing up, you agree to our Terms & conditions, Privacy policy</p>
                         </Col>
                     </Row>
+                </Modal.Body>
+            </Modal>
+
+            {/* Forget password modal */}
+            <Modal
+                size='lg'
+                show={show2}
+                onHide={() => setShow2(false)}
+                dialogClassName="modal-90w"
+                aria-labelledby="example-custom-modal-styling-title"
+            >
+                <Modal.Header
+                    closeButton
+                    style={{ background: '#EFFFF4' }}
+                >
+                    <p className='text-danger'>Reset password</p>
+                </Modal.Header>
+                <Modal.Body>
+                    <ForgetPass />
                 </Modal.Body>
             </Modal>
         </Navbar>

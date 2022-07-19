@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
-const SignUpForm = () => {
+const SignUpForm = ({ setEmail, setShow, setUser }) => {
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -13,9 +14,29 @@ const SignUpForm = () => {
         const password = e.target.password.value;
         const confirmPassword = e.target.confirmPassword.value;
 
+        if (password !== confirmPassword) {
+            toast.error('Password or Confirm Password does not match');
+            return;
+        }
 
-        console.log(firstName, lastName, userName, email, password, confirmPassword);
+        const user = { firstName, lastName, userName, email, password };
+        setEmail(email);
+        setUser(user);
+        localStorage.setItem('email', email);
 
+        fetch('http://localhost:5000/user', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify(user),
+        })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+
+        e.target.reset();
+        toast.success('Signup success');
+        setShow(false);
     }
 
     return (
