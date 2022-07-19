@@ -9,6 +9,8 @@ import { FcGoogle } from 'react-icons/fc';
 import { BiDownArrow, BiCircle, BiRectangle } from 'react-icons/bi';
 import d_log from '../../Assets/d_log.png';
 import { RiArrowGoBackLine } from 'react-icons/ri';
+import SignUpForm from './SignUpForm';
+import SIgnInForm from './SIgnInForm';
 
 const NavBar = () => {
 
@@ -92,35 +94,7 @@ const NavBar = () => {
 
                     <Row>
                         <Col className='col-12 col-md-6'>
-                            <Form>
-                                <div className='d-flex'>
-                                    <Form.Control
-                                        type="text"
-                                        placeholder='First Name'
-                                    />
-                                    <Form.Control
-                                        type="text"
-                                        placeholder='Last Name'
-                                    />
-                                </div>
-                                <Form.Control
-                                    type="email"
-                                    placeholder='Email'
-                                />
-                                <Form.Control
-                                    type="password"
-                                    placeholder='Password'
-                                />
-                                <Form.Control
-                                    type="password"
-                                    placeholder='Confirm Password'
-                                />
-                                <Button
-                                    className='w-100 rounded-pill mt-2'
-                                    variant="primary"
-                                    type="submit"
-                                >Create Account</Button>
-                            </Form>
+                            <SignUpForm />
 
                             <div className='mt-3'>
                                 <Button
@@ -150,7 +124,9 @@ const NavBar = () => {
                 size='lg'
                 show={show1}
                 onHide={handleClose}
-                animation={false}>
+                animation={false}
+            >
+
                 <Modal.Header
                     closeButton
                     style={{ background: '#EFFFF4' }}
@@ -161,6 +137,7 @@ const NavBar = () => {
                         }}
                     >Let's learn, share & inspire each other with our passion for computer engineering. Sign up now 🤘🏼</p>
                 </Modal.Header>
+
                 <Modal.Body>
                     <div className='d-flex justify-content-between'>
                         <h3>Sign In</h3>
@@ -175,30 +152,16 @@ const NavBar = () => {
 
                     <Row>
                         <Col className='col-12 col-md-6'>
-                            <Form>
-                                <Form.Control
-                                    type="email"
-                                    placeholder='Email'
-                                />
-                                <Form.Control
-                                    type="password"
-                                    placeholder='Password'
-                                />
-                                <Button
-                                    className='w-100 rounded-pill mt-2'
-                                    variant="primary"
-                                    type="submit"
-                                >Sign In</Button>
-                            </Form>
+                            <SIgnInForm />
 
                             <div className='mt-3'>
                                 <Button
                                     className='w-100 bg-white border border-2 rounded-3 text-black'
-                                ><RiFacebookCircleFill /> Sign up with Facebook</Button>
+                                ><RiFacebookCircleFill /> Sign in with Facebook</Button>
 
                                 <Button
                                     className='w-100 bg-white border border-2 rounded-3 mt-2 text-black'
-                                ><FcGoogle /> Sign up with Google</Button>
+                                ><FcGoogle /> Sign in with Google</Button>
                                 <p className='fw-bold text-center mt-3'>Forgot Password?</p>
                             </div>
                         </Col>

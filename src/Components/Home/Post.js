@@ -45,8 +45,9 @@ const Post = ({ post }) => {
                     </Col>
                     <Col className='col-4 d-flex justify-content-between align-items-center'>
                         <p className='mt-2 d-none d-md-block'><AiOutlineEye />{view} views</p>
-                        <Button variant='light'>
-                            <BsFillShareFill className='fs-5 me-2' /> Share
+                        <Button variant='light d-flex'>
+                            <BsFillShareFill className='fs-5 me-2' />
+                            <span className='d-md-none'>Share</span>
                         </Button>
                     </Col>
                 </Row>
