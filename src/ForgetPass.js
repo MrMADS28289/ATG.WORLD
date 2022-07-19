@@ -1,20 +1,46 @@
 import React from 'react';
-import { Button, Form, Modal } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
+import { toast } from 'react-toastify';
 
-const ForgetPass = () => {
+const ForgetPass = ({ handleShow, handleClose2 }) => {
+
+    const handleFrogetPass = (e) => {
+        e.preventDefault();
+
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(email, password);
+
+        fetch(`http://localhost:5000/user/${email}`, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({ password }),
+        })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
+
+        // e.target.reset();
+        // show2(false);
+        handleClose2();
+        handleShow();
+        toast.success('Password reset completed');
+    }
+
     return (
-        <Form>
+        <Form onSubmit={handleFrogetPass}>
             <Form.Control
-                name='userName'
-                type="text"
+                name='email'
+                type="email"
                 required
-                placeholder='Username'
+                placeholder='Email'
             />
             <Form.Control
                 name='password'
                 type="password"
                 required
-                placeholder='Password'
+                placeholder='New Password'
             />
             <Button
                 className='w-100 rounded-pill mt-2'

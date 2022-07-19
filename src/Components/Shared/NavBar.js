@@ -21,6 +21,7 @@ const NavBar = () => {
     const [show1, setShow1] = useState(false);
     const [show2, setShow2] = useState(false);
     const handleClose = () => setShow1(false);
+    const handleClose2 = () => setShow2(false);
     const handleShow = () => setShow1(true);
 
     const getEmail = localStorage.getItem('email');
@@ -94,12 +95,36 @@ const NavBar = () => {
                 }
             </Container>
             <Container className='d-flex justify-content-between d-md-none'>
-                <button
-                    className='border-0 bg-white'
-                    onClick={() => setShow(true)}
-                >
-                    Create account. <span className='fw-bold text-primary'>It's free!</span> <IoMdArrowDropdown />
-                </button>
+                {
+                    !email ? <button
+                        className='border-0 bg-white'
+                        onClick={() => setShow(true)}
+                    >
+                        Create account. <span className='fw-bold text-primary'>It's free!</span> <IoMdArrowDropdown />
+                    </button>
+                        :
+                        <div className='d-flex'>
+                            <p className='pt-3'>
+                                <img
+                                    className='border border-2 rounded-pill'
+                                    height={30}
+                                    src={avatar}
+                                    alt="" />
+                                <span className='mx-2'>{user.userName}</span>
+                            </p>
+                            <Button
+                                variant='light'
+                                className='ms-4'
+                                onClick={() => {
+                                    setEmail('');
+                                    toast.success('SignOut Success');
+                                    localStorage.removeItem('email');
+                                }}
+                            >
+                                SignOut
+                            </Button>
+                        </div>
+                }
                 <div>
                     <BiRectangle /> <BiCircle /> <BiDownArrow />
                 </div>
@@ -253,7 +278,10 @@ const NavBar = () => {
                     <p className='text-danger'>Reset password</p>
                 </Modal.Header>
                 <Modal.Body>
-                    <ForgetPass />
+                    <ForgetPass
+                        handleShow={handleShow}
+                        handleClose2={handleClose2}
+                    />
                 </Modal.Body>
             </Modal>
         </Navbar>
