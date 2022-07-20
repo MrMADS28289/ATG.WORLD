@@ -11,7 +11,7 @@ const ForgetPass = ({ handleShow, handleClose2 }) => {
         const password = e.target.password.value;
         console.log(email, password);
 
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://frozen-beach-46823.herokuapp.com/user/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json',

@@ -10,7 +10,7 @@ const SIgnInForm = ({ setUser, setShow1, reload }) => {
         const userName = e.target.userName.value;
         const password = e.target.password.value;
 
-        fetch(`http://localhost:5000/users/${userName}`)
+        fetch(`https://frozen-beach-46823.herokuapp.com/users/${userName}`)
             .then((res) => res.json())
             .then((user) => {
                 if (user?.password === password) {

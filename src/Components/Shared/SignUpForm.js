@@ -24,7 +24,7 @@ const SignUpForm = ({ setEmail, setShow, setUser }) => {
         setUser(user);
         localStorage.setItem('email', email);
 
-        fetch('http://localhost:5000/user', {
+        fetch('https://frozen-beach-46823.herokuapp.com/user', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',

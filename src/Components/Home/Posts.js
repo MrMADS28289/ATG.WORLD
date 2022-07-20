@@ -5,8 +5,6 @@ import { MdCategory, MdEdit } from 'react-icons/md';
 import { AiOutlineExclamationCircle, AiOutlineEye } from 'react-icons/ai';
 import { BsFillShareFill, BsThreeDots, BsBag } from 'react-icons/bs';
 import { RiCalendarEventLine } from 'react-icons/ri';
-import forest from '../../Assets/forest.png';
-import dor from '../../Assets/dor.png';
 import taiar from '../../Assets/taiar.png';
 import Post from './Post';
 import { useState } from 'react';
@@ -16,12 +14,13 @@ const Posts = () => {
 
     const [posts, setPosts] = useState([]);
     const reversedPosts = [...posts].reverse();
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/posts')
+        fetch('https://frozen-beach-46823.herokuapp.com/posts')
             .then(res => res.json())
             .then(data => setPosts(data))
-    }, [])
+    }, [reload]);
 
 
     return (
@@ -29,7 +28,12 @@ const Posts = () => {
             <Row>
                 <Col className='col-12 col-md-8'>
                     {
-                        reversedPosts.map(post => <Post key={post._id} post={post} />)
+                        reversedPosts.map(post => <Post
+                            key={post._id}
+                            post={post}
+                            setReload={setReload}
+                            reload={reload}
+                        />)
                     }
 
                     <div className='border border-2 me-5 mb-3'>

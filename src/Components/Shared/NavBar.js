@@ -13,7 +13,7 @@ import SIgnInForm from './SIgnInForm';
 import { useEffect } from 'react';
 import avatar from '../../Assets/avatar.jpg';
 import { toast } from 'react-toastify';
-import ForgetPass from '../../ForgetPass';
+import ForgetPass from './ForgetPass';
 
 const NavBar = () => {
 
@@ -30,7 +30,7 @@ const NavBar = () => {
     // console.log(user);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${email}`)
+        fetch(`https://frozen-beach-46823.herokuapp.com/user/${email}`)
             .then(res => res.json())
             .then(data => setUser(data))
     }, [email]);

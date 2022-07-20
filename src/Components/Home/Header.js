@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Container, Dropdown, Form, Modal } from 'react-bootstrap';
+import { Button, Container, Form, Modal } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import { MdGroupAdd } from 'react-icons/md';
 import { toast } from 'react-toastify';
+import Loading from '../Shared/Loading';
 
 const Header = () => {
 
@@ -12,24 +13,25 @@ const Header = () => {
     const handleClose = () => setShow(false);
     const [user, setUser] = useState({});
     const email = localStorage.getItem('email');
+    const [reload, setReload] = useState(false);
     // console.log(user);
 
     const imgUploadKey = '3996d247e584371424e08ccdd45a1e9f';
 
     useEffect(() => {
-        fetch(`http://localhost:5000/user/${email}`)
+        fetch(`https://frozen-beach-46823.herokuapp.com/user/${email}`)
             .then(res => res.json())
             .then(data => setUser(data))
     }, [email]);
 
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/posts')
+        fetch('https://frozen-beach-46823.herokuapp.com/posts')
             .then(res => res.json())
             .then(data => setPosts(data))
     }, [])
 
-    const reload = () => {
+    const pageReload = () => {
         window.location.reload();
     }
 
@@ -45,7 +47,7 @@ const Header = () => {
         const url = `https://api.imgbb.com/1/upload?key=${imgUploadKey}`;
         const formData = new FormData();
         formData.append('image', img);
-
+        setReload(true);
         fetch(url, {
             method: 'POST',
             body: formData
@@ -55,7 +57,7 @@ const Header = () => {
                 if (result.success) {
                     const image = result.data.url;
                     const post = { title, pragraph, img: image, type, views: 0, name };
-                    fetch('http://localhost:5000/post', {
+                    fetch('https://frozen-beach-46823.herokuapp.com/post', {
                         method: 'POST',
                         headers: {
                             'Content-type': 'application/json',
@@ -67,7 +69,8 @@ const Header = () => {
 
                     handleClose();
                     toast.success('Post success');
-                    reload();
+                    setReload(false);
+                    pageReload();
                 }
             })
     }
@@ -124,39 +127,44 @@ const Header = () => {
                     <h3 className='text-info'>Write a post</h3>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handlePost}>
-                        <Form.Control
-                            name='title'
-                            type="text"
-                            required
-                            placeholder='Title'
-                        />
-                        <Form.Control
-                            name='pragraph'
-                            type="text"
-                            required
-                            placeholder='Pragraph'
-                        />
-                        <Form.Control
-                            name='img'
-                            type="file"
-                            required
-                        />
-                        <select
-                            name='type'
-                            className='w-100 border border-light'
-                            id="ddlViewBy">
-                            <option value="Article" selected="selected">Article</option>
-                            <option value="Education" >Education</option>
-                            <option value="Meetup">Meetup</option>
-                            <option value="Job">Job</option>
-                        </select>
-                        <Button
-                            className='w-100 rounded-pill mt-2'
-                            variant="primary"
-                            type="submit"
-                        >Post</Button>
-                    </Form>
+                    {
+                        reload ?
+                            <Loading />
+                            :
+                            <Form onSubmit={handlePost}>
+                                <Form.Control
+                                    name='title'
+                                    type="text"
+                                    required
+                                    placeholder='Title'
+                                />
+                                <Form.Control
+                                    name='pragraph'
+                                    type="text"
+                                    required
+                                    placeholder='Pragraph'
+                                />
+                                <Form.Control
+                                    name='img'
+                                    type="file"
+                                    required
+                                />
+                                <select
+                                    name='type'
+                                    className='w-100 border border-light'
+                                    id="ddlViewBy">
+                                    <option value="Article" selected="selected">Article</option>
+                                    <option value="Education" >Education</option>
+                                    <option value="Meetup">Meetup</option>
+                                    <option value="Job">Job</option>
+                                </select>
+                                <Button
+                                    className='w-100 rounded-pill mt-2'
+                                    variant="primary"
+                                    type="submit"
+                                >Post</Button>
+                            </Form>
+                    }
                 </Modal.Body>
             </Modal>
         </>
