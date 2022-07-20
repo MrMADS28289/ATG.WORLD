@@ -9,38 +9,27 @@ import forest from '../../Assets/forest.png';
 import dor from '../../Assets/dor.png';
 import taiar from '../../Assets/taiar.png';
 import Post from './Post';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Posts = () => {
 
-    const posts = [
-        {
-            id: 1,
-            catagory: 'Article',
-            img: forest,
-            title: 'What if famous brands had regular fonts? Meet RegulaBrands!',
-            desc: 'I’ve worked in UX for the better part of a decade. From now on, I plan to re loremLorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, tenetur blanditiis pariatur esse expedita, provident iste accusantium possimus voluptatibus voluptatum inventore similique eveniet. Obcaecati aliquid recusandae corporis, expedita quos harum?',
-            avater: 'https://i.ibb.co/HYV7sjt/leader2.jpg',
-            name: 'Sarthak Kamra',
-            view: '43k'
-        },
-        {
-            id: 2,
-            catagory: 'Education',
-            img: dor,
-            title: 'Tax Benefits for Investment under National Pension Scheme launched by Government',
-            desc: 'I’ve worked in UX for the better part of a decade. From now on, I plan to reLorem ipsum, dolor sit amet consectetur adipisicing elit. Hic, tenetur blanditiis pariatur esse expedita, provident iste accusantium possimus voluptatibus voluptatum inventore similique eveniet. Obcaecati aliquid recusandae corporis, expedita quos harum?',
-            avater: 'https://i.ibb.co/LYFgZV1/team2.jpg',
-            name: 'Sarah West',
-            view: '53k'
-        }
-    ];
+    const [posts, setPosts] = useState([]);
+    const reversedPosts = [...posts].reverse();
+
+    useEffect(() => {
+        fetch('http://localhost:5000/posts')
+            .then(res => res.json())
+            .then(data => setPosts(data))
+    }, [])
+
 
     return (
         <Container className='mt-4'>
             <Row>
                 <Col className='col-12 col-md-8'>
                     {
-                        posts.map(post => <Post key={post.id} post={post} />)
+                        reversedPosts.map(post => <Post key={post._id} post={post} />)
                     }
 
                     <div className='border border-2 me-5 mb-3'>

@@ -27,7 +27,7 @@ const NavBar = () => {
     const getEmail = localStorage.getItem('email');
     const [email, setEmail] = useState(getEmail);
     const [user, setUser] = useState({});
-    console.log(user);
+    // console.log(user);
 
     useEffect(() => {
         fetch(`http://localhost:5000/user/${email}`)

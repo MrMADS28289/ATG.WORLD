@@ -5,6 +5,7 @@ import Posts from './Posts';
 import NavBar from '../Shared/NavBar';
 
 const Home = () => {
+
     return (
         <>
             <NavBar />
