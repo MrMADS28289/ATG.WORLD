@@ -14,7 +14,6 @@ const Header = () => {
     const [user, setUser] = useState({});
     const email = localStorage.getItem('email');
     const [reload, setReload] = useState(false);
-    // console.log(user);
 
     const imgUploadKey = '3996d247e584371424e08ccdd45a1e9f';
 
@@ -48,6 +47,7 @@ const Header = () => {
         const formData = new FormData();
         formData.append('image', img);
         setReload(true);
+
         fetch(url, {
             method: 'POST',
             body: formData

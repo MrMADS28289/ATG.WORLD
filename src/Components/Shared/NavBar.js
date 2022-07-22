@@ -14,6 +14,7 @@ import { useEffect } from 'react';
 import avatar from '../../Assets/avatar.jpg';
 import { toast } from 'react-toastify';
 import ForgetPass from './ForgetPass';
+import { BsArrowRight } from 'react-icons/bs';
 
 const NavBar = () => {
 
@@ -62,6 +63,15 @@ const NavBar = () => {
                         aria-label="Search"
                     />
                 </Form>
+
+                <Link to='/'
+                    type="button"
+                    class="btn btn-secondary me-2 mt-2"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="right"
+                    title="Go to ATG.WORLD">
+                    Dhashboard
+                </Link>
 
                 {
                     !email ? <button

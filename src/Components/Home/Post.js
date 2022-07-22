@@ -10,7 +10,6 @@ const Post = ({ post, setReload, reload }) => {
 
     const [show, setShow] = useState(false);
     const handleShow = () => setShow(true);
-    // const handleClose = () => setShow(false);
 
     const { _id, type, img, title, pragraph, avater, name, views, liked: like } = post;
     const [reload1, setReload1] = useState(false);
