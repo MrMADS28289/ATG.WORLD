@@ -17,7 +17,7 @@ const Dhashboard2 = () => {
     const { firstName, lastName, userName, email } = user || duser;
 
     useEffect(() => {
-        axios.get('http://localhost:5000/users')
+        axios.get('https://frozen-beach-46823.herokuapp.com/users')
             .then(res => {
                 const users = res?.data;
                 setUsers(users);
