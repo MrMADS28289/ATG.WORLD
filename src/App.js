@@ -156,13 +156,17 @@ function App() {
             <div id="four" className="page">
               <Page4 />
             </div>
-          ) : textChange >= 65 && textChange < 83 ? (
+          ) : textChange >= 65 && textChange < 80 ? (
             <div id="five" className="page">
               <Page5 />
             </div>
-          ) : textChange >= 83 && textChange < 100 ? (
+          ) : textChange >= 80 && textChange < 90 ? (
             <div id="six" className="page">
               <Page6 />
+            </div>
+          ) : textChange >= 90 && textChange < 100 ? (
+            <div id="seven" className="page">
+              <Page7 />
             </div>
           ) : (
             <div id="seven" className="page">
