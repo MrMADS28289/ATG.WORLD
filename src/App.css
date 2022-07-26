@@ -1,0 +1,288 @@
+/* scrollbar section starts */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  /* background: #0D131B; */
+  background: transparent;
+  position: absolute;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* scrollbar section ends */
+
+body {
+  overflow-x: hidden;
+}
+
+#large {
+  display: flex;
+  height: 1000px;
+}
+
+svg {
+  height: 50vh;
+  border-radius: 50%;
+  position: absolute;
+  left: 28vw;
+  top: 15vh;
+  transition: all 500ms;
+}
+
+#left {
+  background-color: #16263B;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 100;
+  width: 40vw;
+  transition: all 500ms;
+}
+
+#svg-container {
+  position: relative;
+  width: 37vw;
+  height: 100vh;
+}
+
+#right {
+  width: 60vw;
+  background-color: #0D131B;
+  color: white;
+  height: 700vh;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#right div {
+  height: 100vh;
+}
+
+.dots-nav {
+  background-color: transparent;
+}
+
+#one,
+#two,
+#three,
+#four,
+#five,
+#six,
+#seven {
+  background-color: #0D131B;
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+}
+
+#ux-strategy,
+#erp {
+  line-height: 0rem !important;
+  position: absolute !important;
+  left: -10rem;
+  top: 13rem !important;
+}
+
+#ux-strategy h6:first-child {
+  margin-right: 196px;
+}
+
+#erp h6:first-child {
+  margin-right: 80px;
+}
+
+#text-headline {
+  top: 24vh !important;
+  left: -5vw;
+}
+
+#text-headline h6 {
+  left: -5vw;
+}
+
+#text-headline h6:first-child {
+  margin-right: 14rem;
+}
+
+#svg-container #svg-text div {
+  color: white;
+  position: absolute;
+  right: -10vw;
+  top: 31vh;
+  z-index: 10;
+  margin: 0;
+  text-align: right;
+  width: 50vw;
+  line-height: 100%;
+}
+
+#svg-container #svg-text div h1 {
+  font-size: 4rem;
+}
+
+#svg-container #svg-text div h6 {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+#svg-container #svg-text div h6:first-child {
+  left: 0;
+}
+
+* {
+  scroll-behavior: smooth;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+#download {
+  top: 32vh !important;
+  right: -5vw !important;
+}
+
+#blockchain {
+  line-height: 0rem !important;
+  margin-right: 8rem !important;
+  margin-top: -3rem !important;
+}
+
+#blockchain h6:first-child {
+  position: relative !important;
+  left: -180px !important;
+}
+
+#nasa {
+  left: -8vw;
+}
+
+#nasa h6 {
+  line-height: 3rem;
+  padding: 0 !important;
+  margin: 0 !important;
+  right: 0;
+}
+
+#biggest-classifieds {
+  line-height: 0 !important;
+  margin-right: 6vw !important;
+  margin-top: -2vw !important;
+}
+
+#biggest-classifieds h6:first-child {
+  margin-right: 3vw !important;
+}
+
+#right img {
+  position: absolute;
+}
+
+#page5 img {
+  width: 16rem;
+}
+
+#page6 img {
+  width: 60vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#page7 img {
+  width: 18vw
+}
+
+#page7 {
+  display: flex;
+  align-items: flex-end;
+}
+
+#page7 img:first-child {
+  z-index: 1;
+  left: -13vw
+}
+
+#heading {
+  position: absolute;
+  bottom: 0;
+  width: 65%;
+}
+
+#text {
+  right: -10vw !important;
+  top: 25vh !important;
+  line-height: 1vh !important;
+}
+
+#text h6:first-child {
+  margin-right: 13.5vw;
+}
+
+.heading {
+  color: white;
+}
+
+.heading h1 {
+  font-size: 4rem;
+  line-height: 1rem;
+}
+
+.heading img {
+  width: 18rem;
+  margin: 0 auto;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 1000px) {
+  #large {
+    display: block;
+  }
+
+  #small {
+    display: none;
+  }
+
+  #heading {
+    padding: 50px;
+  }
+}
+
+@media (max-width: 1000px) {
+  body {
+    overflow-y: hidden;
+  }
+
+  #large {
+    display: none;
+  }
+
+  .heading img {
+    background-color: #6311A8;
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  #enterpreneur {
+    background-color: #00834C;
+    padding: 2px !important;
+  }
+}
