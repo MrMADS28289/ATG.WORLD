@@ -233,7 +233,7 @@ const Svg = ({ scrollResult, textChange }) => {
           <path
             class="dotsst dotsfill7"
             style={{
-              fill: textChange >= 95 ? circleFill : "#bdc3c7",
+              fill: textChange >= 100 ? circleFill : "#bdc3c7",
               opacity: 1,
             }}
             d="M88,324 c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6 -6 S 92,324, 88,324 z M88"
