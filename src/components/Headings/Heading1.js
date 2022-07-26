@@ -34,11 +34,17 @@ const Heading1 = () => {
   return (
     <div className="heading">
       <img
+        className="mb-4"
         ref={image}
         src={HeadingImage}
         alt=""
       />
-      <h1 ref={headerText}>ABC 123</h1>
+
+      <h1
+        className="mb-3"
+        ref={headerText}
+      >ABC 123</h1>
+
       <p ref={para}>
         We are the best web development <br /> company in the world
       </p>
