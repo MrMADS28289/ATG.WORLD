@@ -19,7 +19,7 @@ const Heading6 = () => {
 
   return (
     <div className="heading">
-      <h1 ref={headerText}>ABC 678</h1>
+      <h3 ref={headerText}>ABC 678</h3>
       <p>
         Best Since 2017 <br /> We offer wide range of <br /> web development and
         app development

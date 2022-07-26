@@ -31,7 +31,7 @@ const Title1 = () => {
   return (
     <div id="download">
       <h1 ref={downloadHead}>25M+ Downloads</h1>
-      <h6 ref={downloadFoot}>on appstore & google playstore</h6>
+      <h3 ref={downloadFoot}>on appstore & google playstore</h3>
     </div>
   );
 };

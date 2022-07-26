@@ -40,10 +40,10 @@ const Heading1 = () => {
         alt=""
       />
 
-      <h1
+      <h3
         className="mb-3"
         ref={headerText}
-      >ABC 123</h1>
+      >ABC 123</h3>
 
       <p ref={para}>
         We are the best web development <br /> company in the world

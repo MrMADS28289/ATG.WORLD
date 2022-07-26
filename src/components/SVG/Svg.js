@@ -18,18 +18,18 @@ const Svg = ({ scrollResult, textChange }) => {
           textChange >= 0 && textChange < 16
             ? "#6311A8"
             : textChange >= 16 && textChange < 33
-            ? "#4D27CD"
-            : textChange >= 33 && textChange < 50
-            ? "#0E123A"
-            : textChange >= 33 && textChange < 50
-            ? "#16263B"
-            : textChange >= 50 && textChange < 65
-            ? "#16263B"
-            : textChange >= 65 && textChange < 82
-            ? "#124CA1"
-            : textChange >= 82 && textChange < 100
-            ? "#012C91"
-            : "#00834C",
+              ? "#4D27CD"
+              : textChange >= 33 && textChange < 50
+                ? "#0E123A"
+                : textChange >= 33 && textChange < 50
+                  ? "#16263B"
+                  : textChange >= 50 && textChange < 65
+                    ? "#16263B"
+                    : textChange >= 65 && textChange < 82
+                      ? "#124CA1"
+                      : textChange >= 82 && textChange < 100
+                        ? "#012C91"
+                        : "#00834C",
 
         boxShadow: textChange >= 65 && textChange < 82 ? "0 0 30px #222" : "",
         zIndex: -1,
@@ -77,6 +77,7 @@ const Svg = ({ scrollResult, textChange }) => {
             d="M84,80 c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6 -6 S 87, 80, 84,80 z"
           ></path>
         </g>
+
         <g>
           <path
             class="dotsstro1"
@@ -91,6 +92,7 @@ const Svg = ({ scrollResult, textChange }) => {
           ></path>
         </g>
       </g>
+
       <g id="Dots2" class="dots-nav">
         <g>
           <path
@@ -117,6 +119,7 @@ const Svg = ({ scrollResult, textChange }) => {
           ></path>
         </g>
       </g>
+
       <g id="Dots3" class="dots-nav">
         <g>
           <path
@@ -128,6 +131,7 @@ const Svg = ({ scrollResult, textChange }) => {
             d="M332,85 c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6 -6 S 335,85, 332,85 z M332"
           ></path>
         </g>
+
         <g>
           <path
             class="dotsstro3"
@@ -142,6 +146,7 @@ const Svg = ({ scrollResult, textChange }) => {
           ></path>
         </g>
       </g>
+
       <g id="Dots4" class="dots-nav">
         <g>
           <path
@@ -153,6 +158,7 @@ const Svg = ({ scrollResult, textChange }) => {
             d="M380,205 c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6 -6 S 383,205, 380,205 z M380"
           ></path>
         </g>
+
         <g>
           <path
             class="dotsstro4"
@@ -167,6 +173,7 @@ const Svg = ({ scrollResult, textChange }) => {
           ></path>
         </g>
       </g>
+
       <g id="Dots5" class="dots-nav">
         <g>
           <path
@@ -178,6 +185,7 @@ const Svg = ({ scrollResult, textChange }) => {
             d="M335,315 c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6 -6 S 340,315, 335,315 z M335"
           ></path>
         </g>
+
         <g>
           <path
             class="dotsstro5"
@@ -192,6 +200,7 @@ const Svg = ({ scrollResult, textChange }) => {
           ></path>
         </g>
       </g>
+
       <g id="Dots6" class="dots-nav">
         <g>
           <path
@@ -203,6 +212,7 @@ const Svg = ({ scrollResult, textChange }) => {
             d="M210,375 c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6 -6 S 215,375, 210,375 z M210"
           ></path>
         </g>
+
         <g>
           <path
             class="dotsstro6"
@@ -217,6 +227,7 @@ const Svg = ({ scrollResult, textChange }) => {
           ></path>
         </g>
       </g>
+
       <g id="Dots7" class="dots-nav">
         <g>
           <path
@@ -228,6 +239,7 @@ const Svg = ({ scrollResult, textChange }) => {
             d="M88,324 c-3.3,0-6,2.7-6,6s2.7,6,6,6s6-2.7,6 -6 S 92,324, 88,324 z M88"
           ></path>
         </g>
+
         <g>
           <path
             class="dotsstro7"

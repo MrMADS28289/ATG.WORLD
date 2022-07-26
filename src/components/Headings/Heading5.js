@@ -19,7 +19,7 @@ const Heading5 = () => {
 
   return (
     <div className="heading">
-      <h1 ref={headerText}>ABC 567</h1>
+      <h3 ref={headerText}>ABC 567</h3>
       <p>
         We are the best AR <br /> development company <br /> in the world
       </p>

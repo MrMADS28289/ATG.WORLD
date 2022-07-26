@@ -21,7 +21,7 @@ const Heading7 = () => {
   return (
     <div className="heading">
       <img id="enterpreneur" src={Enterpreneur} alt="" />
-      <h1 ref={headerText}>ABC 23478</h1>
+      <h3 ref={headerText}>ABC 23478</h3>
       <p>
         We are the best <br /> web development company
         <br /> in the world
